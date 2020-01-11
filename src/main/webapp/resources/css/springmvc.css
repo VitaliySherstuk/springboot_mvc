@@ -1,0 +1,102 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.transport_section{
+    width: 45%;
+    height: 250px;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 20%;
+    border-color: #0e88df;
+    border-style: solid;
+}
+
+.find_section{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    margin-top: 10%;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-bottom: 2%;
+    border-color: #0e88df;
+    border-style: solid;
+}
+
+.find_section_element{
+   margin-top: 2%;
+   width: 22%;
+}
+
+.table{
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    border: 4px double black;
+    border-color: #0e88df;
+}
+
+.button_submit{
+    width: 8%;
+    float: right;
+    margin: 1%;
+}
+
+.login-form{
+
+    padding: 3%;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 100px;
+    border: 4px double black;
+    width: 20%;
+}
+
+.category{
+    color: blue;
+    float: left;
+}
+
+.header{
+    width: 100%;
+    height: 50px;
+    background-color: #0e88df;
+}
+
+.category_link{
+    float: left;
+    margin-left: 5%;
+}
+
+.button_edit{
+    width: 30%;
+}
+
+.car_card{
+    width: 30%;
+    height: 300px;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10%;
+    border-color: #0e88df;
+    border-style: solid;
+}
+
+.car_card_text{
+    margin:50%;
+}
+
+.car_card_text_cost{
+    color: blue;
+    float: right;
+    font-size: 25px;
+    margin-right: 5%;
+}
+
+.user_name_block{
+    margin-left: -8%;
+    padding-top: 15%;
+}
