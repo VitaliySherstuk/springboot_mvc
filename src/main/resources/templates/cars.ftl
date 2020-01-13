@@ -37,7 +37,11 @@
             </tr>
             <#list cars as car>
                 <tr align="center">
+                <#if car.img??>
                     <td><img src="/photo/${car.img}" alt="car" style="width:40px; height:40px; margin:2%;"></td>
+                <#else>
+                    <td></td>
+                </#if>
                     <td>${car.make}</td>
                     <td>${car.model}</td>
                     <td>${car.year}</td>

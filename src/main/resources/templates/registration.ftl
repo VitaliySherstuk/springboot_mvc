@@ -1,5 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<#import "/spring.ftl" as spring/>
 <html>
     <head>
         <title>SpringMVC</title>
@@ -13,35 +12,34 @@
                     <td>User:</td>
                     <td><input type='text' name='name' value=''></td>
                 </tr>
-                <c:if test="${name_error}">
+                <#if name_error??>
                                         <tr>
 
                                             <h6 style="color: red;">${name}</h6>
                 </tr>
-                                    </c:if>
+                                    </#if>
                 <tr>
                     <td>Password:</td>
                     <td><input type='password' name='password'/></td>
                 </tr>
-                <c:if test="${password_error}">
-                                                           <tr>
-
-                                                                <h6 style="color: red;">${password}</h6>
-                </tr>
-                                                        </c:if>
+                <#if password_error??>
+                    <tr>
+                        <h6 style="color: red;">${password}</h6>
+                    </tr>
+                </#if>
 
                 <tr>
                     <td>Phone:</td>
                     <td><input type='phone' name='phone'/></td>
 
                 </tr>
-                <c:if test="${phone_error}">
+                <#if phone_error??>
                 <tr>
 
 
                                             <h6 style="color: red;">${phone}</h6>
                 </tr>
-                                    </c:if>
+                                    </#if>
                 <tr><input id="submit" name="submit" type="submit"/></tr>
             </table>
         </form>

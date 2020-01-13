@@ -1,6 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<#import "/spring.ftl" as spring/>
 <html>
     <head>
         <title>SpringMVC</title>
@@ -10,12 +8,12 @@
 
        <div class="login-form">
        <div>
-            <c:if test="${wrongLogin}">
+            <#if wrongLogin??>
                 <h3>${messageWrongLogin}</h3>
-            </c:if>
-            <c:if test="${logout}">
+            </#if>
+            <#if logout??>
                 <h3>${message}</h3>
-            </c:if>
+            </#if>
        </div>
         <form method='post' name='loginForm' action="/login">
                     <table>
@@ -29,11 +27,11 @@
                         </tr>
                         <tr>
                             <td colspan='2'><button name="submit" type="submit"
-                                                    value="submit"><spring:message code="login.login"/></button></td>
+                                                    value="submit"><@spring.message "login.login"/></button></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td style="float: right"><a href="/registration"><spring:message code="login.registration"/></a></td>
+                            <td style="float: right"><a href="/registration"><@spring.message "login.registration"/></a></td>
                         </tr>
                     </table>
 

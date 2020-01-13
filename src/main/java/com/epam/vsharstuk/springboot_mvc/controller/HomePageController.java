@@ -1,25 +1,31 @@
 package com.epam.vsharstuk.springboot_mvc.controller;
 
+import com.epam.vsharstuk.springboot_mvc.service.impl.UserDetailsServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/")
 public class HomePageController {
 
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
+
     private Logger LOG = LogManager.getLogger(HomePageController.class);
 
     @RequestMapping(method= RequestMethod.GET)
     public String getHomePage(HttpServletResponse response) {
         LOG.info("Get home page");
-        //String userName = userDetailsService.getUserDetails().getUsername();
-        //response.addCookie(new Cookie("userName", userName));
+        String userName = userDetailsService.getUserDetails().getUsername();
+        response.addCookie(new Cookie("userName", userName));
         return "home";
     }
 

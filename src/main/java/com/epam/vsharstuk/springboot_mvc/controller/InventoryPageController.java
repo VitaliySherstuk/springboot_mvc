@@ -3,6 +3,7 @@ package com.epam.vsharstuk.springboot_mvc.controller;
 import com.epam.vsharstuk.springboot_mvc.model.Car;
 import com.epam.vsharstuk.springboot_mvc.service.CarService;
 import com.epam.vsharstuk.springboot_mvc.service.UserService;
+import com.epam.vsharstuk.springboot_mvc.service.impl.UserDetailsServiceImpl;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,19 +21,17 @@ public class InventoryPageController {
 
     @Autowired
     private CarService carService;
-    /*@Autowired
-    private UserDetailsServiceImpl userDetailsService;*/
-    /*@Autowired
-    private UserService userService;*/
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
+    @Autowired
+    private UserService userService;
 
     private Logger LOG = LogManager.getLogger(HomePageController.class);
 
     @RequestMapping(method = RequestMethod.GET)
     public String getInventoryPage(@CookieValue("userName") String userName, Model model) {
-        //String name = userDetailsService.getUserDetails().getUsername();
-        //Integer userId =userService.findUserByName(name).get(0).getId();
-        Integer userId = 100;
-        String username = "vsh@tut.by";
+        String name = userDetailsService.getUserDetails().getUsername();
+        Integer userId =userService.findUserByName(name).get(0).getId();
         List<Car> cars = carService.findCarByUserId(userId);
 
         if (userName != null) {
@@ -53,10 +52,8 @@ public class InventoryPageController {
                          @RequestParam(value = "year") String year,
                          @RequestParam(value = "cost") String cost) {
 
-        //String username = userDetailsService.getUserDetails().getUsername();
-        //Integer userId = userService.findUserByName(username).get(0).getId();
-        Integer userId = 100;
-        String username = "vsh@tut.by";
+        String username = userDetailsService.getUserDetails().getUsername();
+        Integer userId = userService.findUserByName(username).get(0).getId();
         carService.addCar(make, model, year, cost, userId);
         LOG.info("Car was added for " + username);
         return "redirect:/inventory";

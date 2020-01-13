@@ -1,12 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<#import "/spring.ftl" as spring/>
 <html>
     <head>
         <title>SpringMVC</title>
         <link href="/resources/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
     </head>
     <body>
-        <jsp:include page="header.jsp"/>
+        <#include "header.ftl">
         <div>
             <table class="table">
                 <tr>
@@ -17,7 +16,7 @@
                     <th>New cost</th>
                     <th>Upload</th>
                 </tr>
-                <c:forEach items="${cars}" var="car">
+                <#list cars as car>
                     <tr align="center">
                         <td>${car.make}</td>
                         <td>${car.model}</td>
@@ -38,10 +37,10 @@
                             </form>
                         </td>
                     </tr>
-                </c:forEach>
-                <c:if test="${result}">
+                </#list>
+                <#if result??>
                     <tr><td><h6>Car was updated.</h6></td></tr>
-                </c:if>
+                </#if>
             </table>
         </div>
     </body>

@@ -5,7 +5,7 @@
         <link href="/resources/css/springmvc.css" rel="stylesheet" type="text/css" media="screen"/>
     </head>
     <body>
-        <jsp:include page="header.jsp"/>
+        <#include "header.ftl">
             <div class="find_section">
                 <h3><@spring.message "inventory.add"/></h3>
                 <form method="post" action="/inventory/car" onclick="return true">

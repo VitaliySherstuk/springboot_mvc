@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<#import "/spring.ftl" as spring/>
 <html>
 <head>
     <title>WrongLogin</title>

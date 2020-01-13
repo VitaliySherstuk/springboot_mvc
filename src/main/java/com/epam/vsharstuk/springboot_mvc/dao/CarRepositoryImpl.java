@@ -11,7 +11,9 @@ import org.springframework.stereotype.Repository;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class CarRepositoryImpl implements  CarRepository{
@@ -31,6 +33,13 @@ public class CarRepositoryImpl implements  CarRepository{
         return car;
     };
 
+    private static final RowMapper<String> countRowMapper = (resultSet, rowNum) -> resultSet.getString(1);
+
+    private static final RowMapper<Map<String, String>> userCarCountRowMapper = (resultSet, rowNum) -> {
+        Map<String, String> rows = new HashMap<>();
+        rows.put(resultSet.getString(1), resultSet.getString(2));
+        return rows;
+    };
 
     @Override
     public void addCar(Car car) {
@@ -94,6 +103,18 @@ public class CarRepositoryImpl implements  CarRepository{
         }
 
         return jdbcTemplate.query(sql, carRowMapper);
+    }
+
+    @Override
+    public String carCount() {
+        String sql = "SELECT count(id) FROM cars";
+        return jdbcTemplate.query(sql, countRowMapper).get(0);
+    }
+
+    @Override
+    public List<Map<String, String>> userCarsCount() {
+        String sql = "SELECT u.name, count(c.id) FROM cars c JOIN users u ON c.user_id = u.id GROUP BY u.name";
+        return jdbcTemplate.query(sql, userCarCountRowMapper);
     }
 
     private boolean isFirstStatement(List<Object> parameters, StringBuilder builder, boolean isFirstStatement) {
